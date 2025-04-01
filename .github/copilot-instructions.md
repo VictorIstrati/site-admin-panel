@@ -34,7 +34,6 @@ This file provides context to GitHub Copilot about our Angular admin panel proje
 - Add trailing commas in multiline arrays and objects
 - Place interface properties in alphabetical order
 - Group imports by source (Angular, third-party, application)
-- Add JSDoc comments for public APIs and complex functions
 - Use TypeScript's non-null assertion operator (!.) sparingly
 - Avoid any type unless absolutely necessary
 - Name observables with a $ suffix (e.g., users$)
@@ -247,8 +246,8 @@ export class UserProfileComponent implements OnInit {
 - README.md with setup and development instructions
 - Component documentation using Storybook
 - API endpoints documented with Swagger/OpenAPI
-- JSDoc comments for all public methods and complex private methods
-- Inline code comments explaining non-obvious business logic
+- JSDoc comments should not be added
+- Inline code comments explaining non-obvious business logic should not be added
 - State management diagrams for complex workflows
 - CHANGELOG.md following conventional commits format
 
