@@ -260,6 +260,7 @@ export class UserProfileComponent implements OnInit {
 
 - README.md with setup and development instructions
 - Component documentation using Storybook
+- API endpoints documented with Swagger/OpenAPI
 - JSDoc comments should not be added
 - Inline code comments explaining non-obvious business logic should not be added
 - State management diagrams for complex workflows
