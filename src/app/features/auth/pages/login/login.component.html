@@ -1,0 +1,64 @@
+<h2 class="mb-6 text-xl font-medium text-center">Login to your account</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+  <div class="field">
+    <label for="email" class="block mb-1 text-sm font-medium text-gray-700">Email</label>
+    <p-iconfield styleClass="w-full">
+      <p-inputicon styleClass="pi pi-envelope" />
+      <input
+        id="email"
+        type="email"
+        pInputText
+        formControlName="email"
+        class="w-full"
+        [ngClass]="{'ng-invalid ng-dirty': loginForm.controls.email.invalid && loginForm.controls.email.touched}"
+        placeholder="your@email.com">
+    </p-iconfield>
+    <small
+      *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"
+      class="text-red-500">
+      Please enter a valid email address
+    </small>
+  </div>
+
+  <div class="field">
+    <label for="password" class="block mb-1 text-sm font-medium text-gray-700">Password</label>
+    <p-password
+      id="password"
+      formControlName="password"
+      [toggleMask]="true"
+      [feedback]="false"
+      [ngClass]="{'ng-invalid ng-dirty': loginForm.controls.password.invalid && loginForm.controls.password.touched}"
+      [inputStyleClass]="'w-full'"
+      styleClass="w-full">
+      <ng-template pTemplate="header">
+        <div class="p-1">
+          <i class="pi pi-lock"></i>
+        </div>
+      </ng-template>
+    </p-password>
+    <small
+      *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"
+      class="text-red-500">
+      Password must be at least 8 characters
+    </small>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <div class="field-checkbox">
+      <p-checkbox formControlName="rememberMe" [binary]="true" inputId="rememberMe"></p-checkbox>
+      <label for="rememberMe" class="ml-2 text-sm text-gray-700">Remember me</label>
+    </div>
+    <a routerLink="/auth/forgot-password" class="text-sm text-blue-600 hover:underline">
+      Forgot your password?
+    </a>
+  </div>
+
+  <button
+    pButton
+    type="submit"
+    label="Sign In"
+    class="w-full"
+    [disabled]="loginForm.invalid">
+  </button>
+</form>
