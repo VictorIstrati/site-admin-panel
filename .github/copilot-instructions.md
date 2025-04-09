@@ -127,6 +127,21 @@ export class UserProfileComponent implements OnInit {
 - Use action creators with discriminated union types
 - Prefer using the latest NgRx features like component store for local state
 
+## NgRx and Signals Integration
+
+- Implement a bridge pattern to connect NgRx and Signals for optimal state management
+- Follow these principles for state division:
+  - Use NgRx for: global application state, complex domain data, state with side effects, and shared data across multiple components/features
+  - Use Signals for: UI/component-local state, ephemeral state (loading indicators, form controls), and derived/computed state
+- Create signal wrappers around NgRx selectors using toSignal from @angular/core/rxjs-interop
+- Implement facade services that expose NgRx state as Signals to components
+- Maintain OnPush change detection strategy by leveraging Signals' fine-grained reactivity
+- Use computed Signals to derive UI state from NgRx store data
+- Keep the unidirectional data flow: components should still dispatch actions to NgRx for state changes
+- For form state, use Signals for real-time validation and UI updates, while dispatching actions on submission
+- Implement a StoreSignalBridge utility class in the shared module to standardize this pattern across the application
+- Write unit tests that verify both NgRx state changes and corresponding Signal updates
+
 ## PrimeNG Integration
 
 - Import only required PrimeNG modules to reduce bundle size
@@ -245,7 +260,6 @@ export class UserProfileComponent implements OnInit {
 
 - README.md with setup and development instructions
 - Component documentation using Storybook
-- API endpoints documented with Swagger/OpenAPI
 - JSDoc comments should not be added
 - Inline code comments explaining non-obvious business logic should not be added
 - State management diagrams for complex workflows
