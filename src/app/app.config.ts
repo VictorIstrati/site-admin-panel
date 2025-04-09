@@ -6,6 +6,8 @@ import Aura from '@primeng/themes/aura';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +26,9 @@ export const appConfig: ApplicationConfig = {
             }
         }
     }),
+    provideHttpClient(withInterceptorsFromDi()),
     provideStore(),
-    provideEffects()
+    provideEffects(),
+    MessageService,
 ]
 };
